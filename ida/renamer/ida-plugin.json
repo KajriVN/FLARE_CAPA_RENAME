@@ -1,0 +1,25 @@
+{
+  "IDAMetadataDescriptorVersion": 1,
+  "plugin": {
+    "name": "capa-auto-rename",
+    "entryPoint": "capa_renamer.py",
+    "version": "10.0.0",
+    "idaVersions": ">=7.4",
+    "description": "Rename functions from FLARE capa rule matches, with preview, confidence grading and undo",
+    "license": "Apache-2.0",
+    "categories": [
+      "malware-analysis",
+      "api-scripting-and-automation"
+    ],
+    "pythonDependencies": ["flare-capa==10.0.0"],
+    "urls": {
+      "repository": "https://github.com/mandiant/capa"
+    },
+    "keywords": [
+      "capability-detection",
+      "malware-analysis",
+      "function-renaming",
+      "reverse-engineering"
+    ]
+  }
+}

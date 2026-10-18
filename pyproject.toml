@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flare-capa-rename"
+version = "0.1.0"
+description = "IDA Pro plugin: rename functions from FLARE capa rule matches"
+readme = "ida/renamer/README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = [
+    "flare-capa>=10.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff==0.16.0",
+]
+
+[tool.setuptools]
+# the package lives next to the copy of capa explorer (ida/plugin), mirroring capa's capa/ida layout
+package-dir = {"capa_rename" = "ida/renamer"}
+packages = ["capa_rename"]
+
+[tool.setuptools.package-data]
+capa_rename = ["ida-plugin.json", "README.md", "rename-overrides.example.yml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+# ida/plugin and ida/helpers.py are a copy of capa explorer, kept as-is
+extend-exclude = ["ida/plugin", "ida/helpers.py"]
+
+[tool.ruff.lint]
+# same rules as capa (.github/ruff.toml), without capa's Google copyright header check
+select = ["E", "F", "I", "B", "C4", "ISC", "T20", "SIM", "G", "TD", "PTH", "UP"]
+ignore = ["E402", "E722", "E501", "E203", "E701", "B010", "SIM102", "SIM114", "B905", "UP032", "UP031", "SIM300"]
+
+[tool.ruff.lint.isort]
+length-sort = true
+known-first-party = ["capa_rename"]

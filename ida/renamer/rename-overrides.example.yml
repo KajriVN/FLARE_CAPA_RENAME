@@ -1,0 +1,15 @@
+# capa auto-rename: rule name overrides
+#
+# select this file in the capa auto-rename settings ("Rule name overrides").
+#
+#   <capa rule name>: <function name>   use this name instead of the one derived from the rule name;
+#                                       it is sanitized, and the prefix from the settings is still added.
+#   <capa rule name>: null              never use this rule as evidence, e.g. because it produces
+#                                       false positives on the code you analyze.
+
+encrypt data using RC4 PRGA: rc4_crypt
+encrypt data using RC4 KSA: rc4_init
+hash data using SHA256: sha256
+
+# matches GetLocaleInfo calls that only read date/time formats
+get geographical location: null
